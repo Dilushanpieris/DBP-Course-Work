@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="placeOrderContext" prefHeight="611.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MakeCustomerOrderController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="622.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="1178.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#c2e59c" />
+                  <Stop color="#64b3f4" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" opacity="0.72" text="Place Order Form" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="62.0" prefHeight="0.0" prefWidth="1141.0" />
+      <Label layoutX="14.0" layoutY="81.0" opacity="0.88" text="Order ID :" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="451.0" layoutY="81.0" opacity="0.88" text="Order Date :" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="892.0" layoutY="81.0" opacity="0.88" text="Order Time :" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="CustIdComboBox" layoutX="14.0" layoutY="135.0" onAction="#CustIdCmbBoxOnAction" prefHeight="31.0" prefWidth="171.0" promptText="Customer ID" />
+      <Separator layoutX="17.0" layoutY="115.0" prefHeight="0.0" prefWidth="1141.0" />
+      <Label fx:id="lblOrderID" layoutX="100.0" layoutY="81.0" opacity="0.88" text="C001" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderDate" layoutX="561.0" layoutY="81.0" opacity="0.88" text="2020/12/31" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderTime" layoutX="1004.0" layoutY="81.0" opacity="0.88" text="!2:00:00" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="CustAddressTXT" labelFloat="true" layoutX="492.0" layoutY="135.0" promptText="Customer Address" />
+      <JFXTextField fx:id="CustNameTxt" labelFloat="true" layoutX="255.0" layoutY="135.0" promptText="Customer Name" />
+      <JFXTextField fx:id="CustCityTxt" labelFloat="true" layoutX="723.0" layoutY="135.0" promptText="Customer City" />
+      <JFXTextField fx:id="CustPostCodeTxt" labelFloat="true" layoutX="958.0" layoutY="135.0" promptText="Customer PostalCode" />
+      <JFXComboBox fx:id="ItmIdCmbBox" layoutX="15.0" layoutY="189.0" onAction="#ItmIDCmbBoxOnAction" prefHeight="31.0" prefWidth="171.0" promptText="Item ID" />
+      <JFXTextField fx:id="ItmDesc" labelFloat="true" layoutX="255.0" layoutY="189.0" promptText="Item Description" />
+      <JFXTextField fx:id="UnitPriceTxt" labelFloat="true" layoutX="492.0" layoutY="189.0" promptText="Unit Price" />
+      <JFXTextField fx:id="QtyOnHandTxt" labelFloat="true" layoutX="723.0" layoutY="189.0" promptText="QTY On Hand" />
+      <Separator layoutX="920.0" layoutY="189.0" opacity="0.76" orientation="VERTICAL" prefHeight="31.0" prefWidth="0.0" />
+      <JFXTextField fx:id="QTYTXT" labelFloat="true" layoutX="958.0" layoutY="189.0" promptText="QTY" />
+      <JFXButton layoutX="895.0" layoutY="244.0" onAction="#ClearOnAction" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #95a5a6;" text="Clear" textFill="WHITE" />
+      <Separator layoutX="14.0" layoutY="288.0" prefHeight="0.0" prefWidth="1141.0" />
+      <JFXButton layoutX="1015.0" layoutY="244.0" onAction="#AddToCartOnAction" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: #27ae60;" text="Add To Cart" textFill="WHITE" />
+      <TableView fx:id="tblViewContext" layoutX="14.0" layoutY="301.0" opacity="0.69" prefHeight="264.0" prefWidth="1141.0">
+        <columns>
+          <TableColumn fx:id="ItmCodeCol" prefWidth="122.0" text="Item Code" />
+          <TableColumn fx:id="DescriptorCol" prefWidth="382.9999694824219" text="Description" />
+            <TableColumn fx:id="QTYCol" minWidth="0.0" prefWidth="144.0" text="QTY" />
+            <TableColumn fx:id="UnitPriceCol" prefWidth="202.0" text="Unit Price" />
+            <TableColumn fx:id="TotalCol" prefWidth="289.0" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="23.0" layoutY="578.0" opacity="0.88" text="Total : " textFill="RED">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="84.0" layoutY="579.0" opacity="0.88" text="0.00" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="19.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="1021.0" layoutY="576.0" onAction="#PlaceOrderOnAction" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: #8e44ad;" text="Place Order" textFill="WHITE" />
+      <JFXButton layoutX="741.0" layoutY="244.0" onAction="#RefreshAction" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: #5352ed;" text="Refresh" textFill="WHITE" />
+   </children>
+</AnchorPane>

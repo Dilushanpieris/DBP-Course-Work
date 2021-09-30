@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="RegisterItemContext" prefHeight="489.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemData.RegisterNewItemController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="580.0" stroke="BLACK" strokeType="INSIDE" width="406.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#5614b0" />
+                  <Stop color="#dbd65c" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" opacity="0.84" text="Register New Item" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="21.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="52.0" prefHeight="4.0" prefWidth="379.0" />
+      <JFXTextField fx:id="ItmCodeTxtField" focusColor="#e45064" labelFloat="true" layoutX="14.0" layoutY="141.0" prefHeight="31.0" prefWidth="379.0" promptText="Item Code" stylesheets="@../../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="DescTxtField" focusColor="#e45064" labelFloat="true" layoutX="14.0" layoutY="207.0" prefHeight="31.0" prefWidth="379.0" promptText="Description" stylesheets="@../../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="PackSizeTxtField" focusColor="#e45064" labelFloat="true" layoutX="14.0" layoutY="269.0" prefHeight="31.0" prefWidth="379.0" promptText="Pack Size" stylesheets="@../../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="UntPriceTxtField" focusColor="#e45064" labelFloat="true" layoutX="14.0" layoutY="334.0" prefHeight="31.0" prefWidth="379.0" promptText="Unit Prize" stylesheets="@../../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="QtyOnHandTxtField" focusColor="#e45064" labelFloat="true" layoutX="14.0" layoutY="394.0" prefHeight="31.0" prefWidth="379.0" promptText="Qty On Hand" stylesheets="@../../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="102.0" layoutY="451.0" onAction="#SaveItemOnAction" prefHeight="40.0" prefWidth="204.0" style="-fx-background-color: #6ab04c;" text="Save Item" textFill="WHITE" />
+      <JFXButton layoutX="262.0" layoutY="535.0" onAction="#CancelOnAction" prefHeight="31.0" prefWidth="130.0" style="-fx-background-color: #95afc0; -fx-background-radius: 15px;" text="Cancel" />
+   </children>
+</AnchorPane>

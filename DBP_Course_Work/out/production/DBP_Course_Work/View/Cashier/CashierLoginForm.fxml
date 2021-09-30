@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="CashierLoginFormContext" prefHeight="508.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CashierLoginFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="508.0" stroke="BLACK" strokeType="INSIDE" width="784.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#00416a" />
+                  <Stop color="#e4e5e6" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" opacity="0.82" text="Cashier Login " textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="34.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="69.0" prefHeight="0.0" prefWidth="752.0" />
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="119.0" onAction="#ManageOrdersOnAction" opacity="0.8" prefHeight="50.0" prefWidth="386.0" style="-fx-background-color: #10ac84; -fx-background-radius: 15px;" text="Manage Orders" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="213.0" onAction="#MakeCustOrderOnAction" opacity="0.79" prefHeight="50.0" prefWidth="386.0" style="-fx-background-color: #ff9f43; -fx-background-radius: 15px;" text="Make Customer Order" textFill="WHITE" />
+      <JFXButton layoutX="615.0" layoutY="456.0" onAction="#LogoutOnAction" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #8395a7; -fx-background-radius: 15px;" text="Logout" />
+   </children>
+</AnchorPane>

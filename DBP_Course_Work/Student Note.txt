@@ -1,0 +1,33 @@
+Hello Evaluater,
+
+In The Following Database Programming Project. I Have Achived All The Main Functinalities.As mentiond Below.Please Use "admin"As Username And "abc123"As Password For Both Admin And user Logins.Database Connection Is Created By Singlton Design And You can Change Password Or Ports at DbConnection.java That Located In Src.
+
+Working functionalities...
+	1)Adding New Item(As Admin Only )
+	2)Modifiying Item (Press Enter After Adding ID)
+	3)Delete Item(Same As Above)
+	4)Manage Orders(aT Customer)
+	5)Place Customer Order(Without Any Error)
+	6)Database releted All Savings Updatings And Deletings.
+	7)Data Validation While Inserting 
+	8)Written All Prepared Statements.
+	9)Syncing All Four Tables.
+	10)MVC Architecture.
+	
+	
+Not-Working functionalities...
+	1)Use Case Of System reports.(SysReports,Least/Most movable Item) Not implemented Due To Deadline
+	2)QTY On hand Deduction 
+
+------------------------------------------------------------
+
+MySQL Commands Are Also Included In The Src Package.
+
+
+Thank You........
+	
+
+
+
+
+

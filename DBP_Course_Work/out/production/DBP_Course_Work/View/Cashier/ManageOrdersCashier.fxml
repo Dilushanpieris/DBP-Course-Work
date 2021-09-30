@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="CashierManageOrderContext" prefHeight="524.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManageOrdersCashierController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="534.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="404.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#8a2387" />
+                  <Stop color="#e94057" offset="0.509022449559534" />
+                  <Stop color="#f27121" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" opacity="0.79" text="Manage Order" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="28.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="48.0" prefHeight="0.0" prefWidth="377.0" />
+      <JFXTextField fx:id="lblItem" focusColor="#ccff00" labelFloat="true" layoutX="14.0" layoutY="135.0" onAction="#OrderIdOnAction" prefHeight="31.0" prefWidth="377.0" promptText="Item ID" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="419.0" onAction="#ModOrderOnAction" prefHeight="38.0" prefWidth="160.0" style="-fx-background-color: #fdcb6e;" text="Modify Order" textFill="#7c7c7c" />
+      <JFXButton buttonType="RAISED" layoutX="215.0" layoutY="419.0" onAction="#RmvOrderOnAction" prefHeight="38.0" prefWidth="160.0" style="-fx-background-color: #d63031;" text="Remove Order" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="238.0" layoutY="488.0" onAction="#CancelOnAction" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #636e72; -fx-background-radius: 15px;" text="Cancel" textFill="WHITE" />
+      <JFXTextField fx:id="lblOrderQty" labelFloat="true" layoutX="15.0" layoutY="199.0" prefHeight="31.0" prefWidth="377.0" promptText="Order Qty" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="lblDiscount" labelFloat="true" layoutX="14.0" layoutY="259.0" prefHeight="31.0" prefWidth="377.0" promptText="Discount" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="lblOrder" focusColor="#ccff00" labelFloat="true" layoutX="14.0" layoutY="74.0" prefHeight="31.0" prefWidth="377.0" promptText="Order ID" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+   </children>
+</AnchorPane>

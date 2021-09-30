@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="AdminContext" prefHeight="500.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="501.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="784.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ff4b1f" />
+                  <Stop color="#1fddff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="8.0" prefHeight="34.0" prefWidth="228.0" text="Welcome Admin" textFill="#ffffff99">
+         <font>
+            <Font name="Bauhaus 93" size="29.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="52.0" prefHeight="0.0" prefWidth="744.0" />
+      <JFXButton buttonType="RAISED" layoutX="616.0" layoutY="442.0" onAction="#LogoutOnAction" opacity="0.64" prefHeight="34.0" prefWidth="142.0" style="-fx-background-radius: 15px; -fx-background-color: #95a5a6;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="27.0" layoutY="117.0" onAction="#SysReportsOnAction" prefHeight="46.0" prefWidth="390.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 15px;" text="View System Reports" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="27.0" layoutY="186.0" onAction="#manageItemsOnAction" prefHeight="46.0" prefWidth="390.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 15px;" text="Manage Items" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AddnewCustomerContext" prefHeight="552.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddNewCustomerFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="552.0" stroke="BLACK" strokeType="INSIDE" width="401.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#2c3e50" />
+                  <Stop color="#3498db" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" text="Add New Customer" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="21.0" />
+         </font>
+      </Label>
+      <Separator layoutX="11.0" layoutY="48.0" prefHeight="3.0" prefWidth="380.0" />
+      <JFXTextField fx:id="CustIdTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="83.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer ID" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="CustTitleTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="141.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer Title" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="CustNameTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="204.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer Name" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="CustAddressTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="261.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer Address" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="CustCityTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="317.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer City" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="CustProvinceTxt" focusColor="#ee00ff" labelFloat="true" layoutX="16.0" layoutY="372.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer Province" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="PostalCodeTxt" focusColor="#ee00ff" labelFloat="true" layoutX="17.0" layoutY="434.0" prefHeight="31.0" prefWidth="367.0" promptText="Customer Postal Code" stylesheets="@../../CSS/Styles.css" unFocusColor="WHITE" />
+      <JFXButton layoutX="90.0" layoutY="489.0" onAction="#SaveNewCustOnAction" prefHeight="39.0" prefWidth="222.0" style="-fx-background-color: #ffa502;" text="Save New Customer" textFill="WHITE" />
+   </children>
+</AnchorPane>

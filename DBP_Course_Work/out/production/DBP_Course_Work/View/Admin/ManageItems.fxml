@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MngItemsOnContext" prefHeight="502.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManageItemsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="508.0" stroke="BLACK" strokeType="INSIDE" width="479.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="PURPLE" />
+                  <Stop color="PINK" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="14.0" layoutY="14.0" text="Manage Items" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="26.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="49.0" prefHeight="6.0" prefWidth="455.0" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="275.0" onAction="#RmvItemOnAction" opacity="0.82" prefHeight="38.0" prefWidth="273.0" style="-fx-background-color: #ff4d4d; -fx-background-radius: 15px;" text="Remove New Item" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="192.0" onAction="#ModItemOnAction" opacity="0.82" prefHeight="38.0" prefWidth="273.0" style="-fx-background-color: #ff9f1a; -fx-background-radius: 15px;" text="Modify New Item" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="100.0" onAction="#RegisterItemOnAction" opacity="0.82" prefHeight="38.0" prefWidth="273.0" style="-fx-background-color: #7d5fff; -fx-background-radius: 15px;" text="Register New Item" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="343.0" layoutY="463.0" onAction="#GoBackOnAction" opacity="0.82" prefHeight="22.0" prefWidth="126.0" style="-fx-background-color: #4b4b4b; -fx-background-radius: 15px;" text="Go Back" textFill="WHITE" />
+   </children>
+</AnchorPane>
