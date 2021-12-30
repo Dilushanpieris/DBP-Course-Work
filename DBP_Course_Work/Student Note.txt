@@ -9,19 +9,32 @@ Working functionalities...
 	4)Manage Orders(aT Customer)
 	5)Place Customer Order(Without Any Error)
 	6)Database releted All Savings Updatings And Deletings.
-	7)Data Validation While Inserting 
+	7)Data Validation While Inserting Without RegEx(logics Only)
 	8)Written All Prepared Statements.
 	9)Syncing All Four Tables.
-	10)MVC Architecture.
+	10)MVC To Layered.
 	
 	
 Not-Working functionalities...
-	1)Use Case Of System reports.(SysReports,Least/Most movable Item) Not implemented Due To Deadline
+	1)Use Case Of System reports.(SysReports,Least/Most movable Item) 
 	2)QTY On hand Deduction 
 
 ------------------------------------------------------------
+Layerd Architecture (Working functionalities...)
 
-MySQL Commands Are Also Included In The Src Package.
+	1)DAO package With Loose Coupled.(Full persistance Layer)
+	2)DTO Packages With Entity Package
+	3)Dependency Injected Objects.
+	4)DTO To Entity Conversion
+	5)Much Less Boilerplate Codes
+
+Layerd Architecture (NOT-Working functionalities...)
+	1)BO Package(Couldn't Find A Requirement To BO Layer)
+	2)Little Bit Of Repeted Codes
+	3)Factory Method Not Included.
+------------------------------------------------------------
+
+MySQL Commands Are Also Included In The Src Package.(SQL)
 
 
 Thank You........

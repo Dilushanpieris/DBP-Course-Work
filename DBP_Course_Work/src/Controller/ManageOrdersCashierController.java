@@ -2,6 +2,9 @@ package Controller;
 
 import DB.DbConnection;
 import com.jfoenix.controls.JFXTextField;
+import dao.OrderDetailDao;
+import dao.OrderDetailDaoImpl;
+import dto.OrderDetailDTO;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
@@ -11,28 +14,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+//Cleared
 public class ManageOrdersCashierController {
     public AnchorPane CashierManageOrderContext;
     public JFXTextField lblItem;
     public JFXTextField lblOrderQty;
     public JFXTextField lblDiscount;
     public JFXTextField lblOrder;
+    OrderDetailDao od1=new OrderDetailDaoImpl();
 
     public void ModOrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Connection con = DbConnection.getInstance().getConnection();
-        String TempOrderID=lblOrder.getText();
+        int TempOrderID= Integer.parseInt(lblOrder.getText());
         String tempItemID=lblItem.getText();
         int tempOrderQty= Integer.parseInt(lblOrderQty.getText());
         double tempDis= Double.parseDouble(lblDiscount.getText());
-        String query="UPDATE OrderDetail SET OrderQty=?,Discount=? WHERE ItemCode=? AND OrderID=?";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,tempOrderQty);
-        stm.setObject(2,tempDis);
-        stm.setObject(3,tempItemID);
-        stm.setObject(4,TempOrderID);
-
-        if(stm.executeUpdate()>0){
+        if(od1.modifyOrder(new OrderDetailDTO(tempItemID,TempOrderID,tempOrderQty,tempDis))){
             new Alert(Alert.AlertType.CONFIRMATION,"Updated..").show();
         }
         else {
@@ -44,13 +40,7 @@ public class ManageOrdersCashierController {
         Connection con = DbConnection.getInstance().getConnection();
         String TempOrderID=lblOrder.getText();
         String tempItemID=lblItem.getText();
-        int tempOrderQty= Integer.parseInt(lblOrderQty.getText());
-        double tempDis= Double.parseDouble(lblDiscount.getText());
-        String query="DELETE FROM OrderDetail WHERE ItemCode=? AND OrderID=?";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,tempItemID);
-        stm.setObject(2,TempOrderID);
-        if(stm.executeUpdate()>0){
+        if(od1.removeOrder(tempItemID,TempOrderID)){
             new Alert(Alert.AlertType.CONFIRMATION,"Deleted..").show();
         }
         else{
@@ -64,27 +54,12 @@ public class ManageOrdersCashierController {
     }
 
     public void OrderIdOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Connection con = DbConnection.getInstance().getConnection();
         String TempOrderID=lblOrder.getText();
         String tempItemID=lblItem.getText();
-        String query="SELECT * FROM OrderDetail WHERE ItemCode=? AND OrderID=?";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,tempItemID);
-        stm.setObject(2,TempOrderID);
-        ResultSet set = stm.executeQuery();
-        if(set.next()){
-            String TempItID=set.getString(1);
-            String TempOdID=set.getString(2);
-            int OrderQty=set.getInt(3);
-            double TempDis=set.getDouble(4);
-
-            lblItem.setText(TempItID);
-            lblOrder.setText(TempOdID);
-            lblOrderQty.setText(String.valueOf(OrderQty));
-            lblDiscount.setText(String.valueOf(TempDis));
-        }
-        else {
-            new Alert(Alert.AlertType.WARNING,"Empty Result Set").show();
-        }
+        String[] data=od1.getOrderDetailData(tempItemID,TempOrderID);
+        lblItem.setText(data[0]);
+        lblOrder.setText(data[1]);
+        lblOrderQty.setText(data[2]);
+        lblDiscount.setText(data[3]);
     }
 }

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-
+//cleared
 public class ManageItemsController {
     public AnchorPane MngItemsOnContext;
 

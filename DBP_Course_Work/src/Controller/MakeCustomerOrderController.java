@@ -1,12 +1,11 @@
 package Controller;
 
-import Controller.DataController.Customer;
-import Controller.DataController.Item;
-import DB.DbConnection;
-import Model.CartTm;
+import dto.CartTm;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.org.apache.xpath.internal.operations.Or;
+import dao.*;
+import dto.OrderDTO;
+import dto.OrderDetailDTO;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -27,16 +26,13 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
-
+//Cleared
 
 
 
@@ -64,9 +60,10 @@ public class MakeCustomerOrderController {
     public Label lblTotal;
 
     int cartSelectedRow=-1;
-    static int OrderId=1002;
-    public static int FiristOrderID=1000;
-
+    CustomerDaoImpl c1=new CustomerDaoImpl();
+    ItemDao i1=new ItemDaoImpl();
+    OrderDao o1=new OrderDaoImpl();
+    OrderDetailDao od1=new OrderDetailDaoImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
         ItmCodeCol.setCellValueFactory(new PropertyValueFactory<>("ItmCode"));
@@ -91,26 +88,11 @@ public class MakeCustomerOrderController {
     }
 
     public void setCustomerData(String CustomerID) throws SQLException, ClassNotFoundException {
-        Connection con = DbConnection.getInstance().getConnection();
-        String query="SELECT * FROM Customer WHERE CustID=?";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,CustomerID);
-        ResultSet set = stm.executeQuery();
-
-        if(set.next()){
-            String TempID=set.getString(1);
-            String TempTitle=set.getString(2);
-            String TempName=set.getString(3);
-            String TempAddress=set.getString(4);
-            String TempCity=set.getString(5);
-            String TempProvince=set.getString(6);
-            String TempPostalCode=set.getString(7);
-
-            CustNameTxt.setText(TempName);
-            CustAddressTXT.setText(TempAddress);
-            CustCityTxt.setText(TempCity);
-            CustPostCodeTxt.setText(TempPostalCode);
-        }
+            String data[]=c1.getCustData(CustomerID);
+            CustNameTxt.setText(data[0]);
+            CustAddressTXT.setText(data[1]);
+            CustCityTxt.setText(data[2]);
+            CustPostCodeTxt.setText(data[3]);
     }
 
     public void CustIdCmbBoxOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
@@ -133,23 +115,10 @@ public class MakeCustomerOrderController {
     }
 
     private void setItemData(String ItemID) throws SQLException, ClassNotFoundException {
-        Connection con = DbConnection.getInstance().getConnection();
-        String query="SELECT * FROM Item WHERE ItemCode=?";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,ItemID);
-        ResultSet set = stm.executeQuery();
-
-        if(set.next()){
-            String TempCode=set.getString(1);
-            String TempDescription=set.getString(2);
-            String TempPackSize=set.getString(3);
-            Double TempUnitPrice=set.getDouble(4);
-            int TempQtyOnHand=set.getInt(5);
-
-            ItmDesc.setText(TempDescription);
-            UnitPriceTxt.setText(String.valueOf(TempUnitPrice));
-            QtyOnHandTxt.setText(String.valueOf(TempQtyOnHand));
-        }
+            String[]Data=i1.getItemData(ItemID);
+            ItmDesc.setText(Data[1]);
+            UnitPriceTxt.setText(Data[3]);
+            QtyOnHandTxt.setText(Data[4]);
     }
 
     public void ClearOnAction(ActionEvent actionEvent) {
@@ -237,17 +206,9 @@ public class MakeCustomerOrderController {
         return  -1;
     }
 
-    public void AddToOrderDetail() throws SQLException, ClassNotFoundException, IOException {
-        Connection con = DbConnection.getInstance().getConnection();
-        String query="INSERT INTO OrderDetail VALUES(?,?,?,?)";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,ItmIdCmbBox.getValue());
-        stm.setObject(2,FiristOrderID);
-        stm.setObject(3,CalQty());
-        stm.setObject(4,0.00);
-        if(stm.executeUpdate()>0){
+    public void AddToOrderDetail(int orderID) throws SQLException, ClassNotFoundException, IOException {
+        if(od1.AddtoOrderDetail(new OrderDetailDTO(ItmIdCmbBox.getValue(),orderID,CalQty(),0.00))){
             new Alert(Alert.AlertType.CONFIRMATION,"Order Placed..").showAndWait();
-            FiristOrderID=getFinalOrderID()+1;
             RefreshOverride();
         }
         else{
@@ -255,47 +216,31 @@ public class MakeCustomerOrderController {
         }
 
     }
-    public int getFinalOrderID() throws SQLException, ClassNotFoundException {
-        String tempOrderID="1001";
-        Connection con = DbConnection.getInstance().getConnection();
-        String query="SELECT Max(OrderID) FROM Orders";
-        PreparedStatement stm=con.prepareStatement(query);
-        ResultSet set = stm.executeQuery();
-        if(set.next()){
-            tempOrderID=set.getString(1);
-        }
-        return Integer.parseInt(tempOrderID);
-    }
+
 
     public void PlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
+        if(CustIdComboBox.getSelectionModel().isEmpty()&ItmIdCmbBox.getSelectionModel().isEmpty()){
+            new Alert(Alert.AlertType.WARNING,"Please Select Data And Try Again..").show();
+            return;
+        }
+        int orderID=o1.getNextOrderID();
         OffsetDateTime offsetDT = OffsetDateTime.now();
-        Connection con = DbConnection.getInstance().getConnection();
-        String query="INSERT INTO Orders VALUES(?,?,?)";
-        PreparedStatement stm=con.prepareStatement(query);
-        stm.setObject(1,FiristOrderID);
-        stm.setObject(2,offsetDT.toLocalDate());
-        stm.setObject(3,CustIdComboBox.getValue());
-        if(stm.executeUpdate()>0){
+        if(o1.OrderInsert(new OrderDTO(orderID,offsetDT.toLocalDate(),CustIdComboBox.getValue()))){
         }
         else{
             new Alert(Alert.AlertType.WARNING,"Try Again..").show();
         }
-        AddToOrderDetail();
-
-
-
-
-
+        AddToOrderDetail(orderID);
     }
 
     private void loadItemCodes() throws SQLException, ClassNotFoundException {
-        List<String>ItemIds=new Item().getAllItemIds();
+        List<String>ItemIds=i1.getAllItemIds();
         ItmIdCmbBox.getItems().addAll(ItemIds);
     }
 
 
     private void loadCustIDs() throws SQLException, ClassNotFoundException {
-        List<String> customerIds = new Customer().getCustomerIds();
+        List<String> customerIds = c1.getCustomerIds();
         CustIdComboBox.getItems().addAll(customerIds);
 
     }

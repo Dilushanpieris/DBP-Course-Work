@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,7 +26,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
-
+//Cleared
 public class DashBoardFormController {
 
 
@@ -34,6 +35,7 @@ public class DashBoardFormController {
     public JFXTextField txtUName;
     public JFXPasswordField txtPassword;
     public JFXCheckBox checkBoxAdmin;
+    public Rectangle dashboardformContext;
 
     public void initialize() {
         TimeNow();
@@ -55,6 +57,7 @@ public class DashBoardFormController {
         if(checkBoxAdmin.isSelected()){
             if("admin".equals(txtUName.getText())&&"abc123".equals(txtPassword.getText())){
                 //open Admin Form
+
                 URL resource = getClass().getResource("../View/Admin/AdminForm.fxml");
                 Parent load = FXMLLoader.load(resource);
                 Scene scene=new Scene(load);
@@ -62,6 +65,7 @@ public class DashBoardFormController {
                 stage.setTitle("Admin Form");
                 stage.setScene(scene);
                 stage.show();
+                dashboardformContext.getScene().getWindow().hide();
             }
             else{
                 Alert alert=new Alert(Alert.AlertType.WARNING);
@@ -82,6 +86,7 @@ public class DashBoardFormController {
                 stage.setTitle("Admin Form");
                 stage.setScene(scene);
                 stage.show();
+                dashboardformContext.getScene().getWindow().hide();
             }
             else{
                 Alert alert=new Alert(Alert.AlertType.WARNING);

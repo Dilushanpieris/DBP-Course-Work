@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-
+//cleaerd
 public class CashierLoginFormController {
     public AnchorPane CashierLoginFormContext;
 
@@ -33,8 +33,14 @@ public class CashierLoginFormController {
         stage.show();
     }
 
-    public void LogoutOnAction(ActionEvent actionEvent) {
-        Stage stage= (Stage) CashierLoginFormContext.getScene().getWindow();
-        stage.close();
+    public void LogoutOnAction(ActionEvent actionEvent) throws IOException {
+        CashierLoginFormContext.getScene().getWindow().hide();
+        URL resource = getClass().getResource("../View/DashBoardForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        Scene scene=new Scene(load);
+        Stage stage=new Stage();
+        stage.setTitle("Main Login");
+        stage.setScene(scene);
+        stage.show();
     }
 }
